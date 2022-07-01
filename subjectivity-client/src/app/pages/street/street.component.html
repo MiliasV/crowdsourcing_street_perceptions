@@ -1,0 +1,32 @@
+<div class="main-content" style="height: 100%" *ngIf="initialized">
+  <div fxLayout="column" fxFill>
+    <div fxLayout fxFlex>
+      <div #parentElement fxFlex="60" fxLayoutAlign="center center" style="border-right: 1px solid grey;">
+        <app-imagery class="viewer"></app-imagery>
+        <mat-spinner *ngIf="!viewerLoaded" class="spinner"></mat-spinner>
+      </div>
+      <div class="two" fxFlex="40" fxLayoutAlign="center center">
+        <div fxLayout="column" fxFill>
+          <div fxFlex="50" fxLayoutAlign="center center" style="border-bottom: 1px solid grey; padding-top: 64px;">
+            <app-map [pathId]="pathId" (complete)="endTask()" ></app-map>
+            <mat-spinner *ngIf="!mapLoaded" class="spinner"></mat-spinner>
+          </div>
+          <div fxFlex="50" fxLayoutAlign="center center">
+            <div fxLayout="column" fxFill>
+
+              <div fxFlex="75"  style="padding: 10px;">
+                <app-rate [rate]="rate" (rateChange)="onRateChange($event)"></app-rate>
+              </div>
+
+              <div fxFlex="25" fxLayout="row" fxLayoutAlign="end end" class="action-buttons">
+                <button mat-raised-button color="primary" (click)="submit()" [disabled]="!submitActive">SUBMIT SCORES</button>
+                <button mat-raised-button  (click)="finish()" [disabled]="!taskFinished">FINISH TASK</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

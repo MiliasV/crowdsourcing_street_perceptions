@@ -1,0 +1,18 @@
+<div *ngIf="data && data.image && similarImage != null && currentImage != null">
+  <div mat-dialog-title align="end">
+    <button mat-raised-button [mat-dialog-close]="rate" color="primary" [disabled]="!submitActive">Continue</button>
+  </div>
+  <div id="dialogContent" mat-dialog-content [ngClass]="{'big-screen': innerHeight >= 900, 'small-screen': innerHeight < 900}">
+    <mat-card class="example-card">
+      <mat-card-content>
+        <img [src]="similarImage" height="100%;" style="max-height: 400px; max-width: 45%;">
+        <img [src]="currentImage" height="100%;" style="float: right; max-height: 400px; max-width: 45%;">
+      </mat-card-content>
+    </mat-card>
+    <app-rate [rate]="rate" [defaultRate]="data.rate" [isSimilarity]="true" (rateChange)="onRateChange($event)" style="font-size: 15px;"></app-rate>
+  </div>
+  <div mat-dialog-actions align="end">
+    <!--<button mat-raised-button mat-dialog-close>Close</button>-->
+    <button mat-raised-button [mat-dialog-close]="rate" color="primary" [disabled]="!submitActive">Continue</button>
+  </div>
+</div>

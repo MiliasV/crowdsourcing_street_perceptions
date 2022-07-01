@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Task Instruction</h2>
+<mat-dialog-content class="mat-typography" *ngIf="data.innerHeight">
+  <video controls [height]="data.innerHeight">
+    <source src="assets/instruction.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</mat-dialog-content>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="primary">Continue</button>
+</div>

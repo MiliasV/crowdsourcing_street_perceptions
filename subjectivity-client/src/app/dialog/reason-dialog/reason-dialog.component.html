@@ -1,0 +1,54 @@
+<mat-dialog-content class="mat-typography">
+  <div fxLayout="column" fxFill>
+    <div fxFlex="20" fxLayoutAlign="start stretch" style="margin-bottom: 40px;">
+      <mat-hint style="font-size: larger">
+        Please shortly explain your reason(s) for the following scores:
+      </mat-hint>
+    </div>
+
+    <div fxFlex="30"  style="padding-bottom: 40px;" *ngIf="data.isEven || rate.safety == 1 || rate.safety == 5">
+      <div fxLayout="column" fxFill>
+        <div fxFlex="30" fxLayoutAlign="start center">
+          <mat-hint>
+            <strong>Your safety score: {{rate.safety}}</strong>
+          </mat-hint>
+        </div>
+        <div fxFlex="40" fxLayoutAlign="start top">
+          <form class="message-area">
+            <mat-form-field class="example-full-width">
+              <input matInput #message maxlength="100" placeholder="your reason(s) for score {{rate.safety}}..." (input)="reasonChange()"
+                     [(ngModel)]="rate.safetyReason" [ngModelOptions]="{standalone: true}" autocomplete="off">
+              <mat-hint align="start" style="color:red">* please explain using keywords separated by semicolon ( ; )</mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
+            </mat-form-field>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="30" fxLayoutAlign="start stretch" style="padding-bottom: 40px;" *ngIf="data.isEven || rate.attractiveness == 1 || rate.attractiveness == 5">
+      <div fxLayout="column" fxFill>
+        <div fxFlex="30" fxLayoutAlign="start center">
+          <mat-hint>
+            <strong>Your attractiveness score: {{rate.attractiveness}}</strong>
+          </mat-hint>
+        </div>
+        <div fxFlex="70" fxLayoutAlign="center center">
+          <form class="message-area">
+            <mat-form-field class="example-full-width">
+              <input matInput #message maxlength="100" placeholder="your reason(s) for score {{rate.attractiveness}}..." (input)="reasonChange()"
+                     [(ngModel)]="rate.attractivenessReason" [ngModelOptions]="{standalone: true}" autocomplete="off">
+              <mat-hint align="start" style="color:red">please explain using keywords separated by semicolon ( ; )</mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="null">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="rate" [disabled]="!continueActive">CONTINUE</button>
+</mat-dialog-actions>

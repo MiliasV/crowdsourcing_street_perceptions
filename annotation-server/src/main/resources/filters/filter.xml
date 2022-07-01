@@ -1,0 +1,13 @@
+<ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+    <ogc:And>
+        <ogc:BBOX>
+            <gml:Envelope srsName="EPSG:3857" xmlns:gml="http://www.opengis.net/gml">
+                <gml:lowerCorner>##LEFT## ##BOTTOM##</gml:lowerCorner>
+                <gml:upperCorner>##RIGHT## ##TOP##</gml:upperCorner>
+            </gml:Envelope>
+        </ogc:BBOX>
+        <ogc:PropertyIsNull>
+            <ogc:PropertyName>expiredAt</ogc:PropertyName>
+        </ogc:PropertyIsNull>
+    </ogc:And>
+</ogc:Filter>

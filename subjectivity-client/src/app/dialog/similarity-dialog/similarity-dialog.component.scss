@@ -1,0 +1,19 @@
+mat-dialog-container{
+  display: inline-block;
+  .mat-dialog-content {
+    mat-card{
+      display: inline-block;
+      width: 97%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.small-screen{
+  overflow-y: auto;
+}
+
+.big-screen{
+  max-height: unset !important;
+  overflow-y: hidden;
+}

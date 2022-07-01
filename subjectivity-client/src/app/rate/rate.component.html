@@ -1,0 +1,87 @@
+<div fxLayout="column" fxFill *ngIf="isSimilarity">
+  <div fxFlex="100" fxLayoutAlign="start stretch" style="padding: 10px;">
+    <div fxLayout="column" fxFill>
+      <div fxFlex="50">
+        <mat-hint style="margin-bottom: 10px; margin-top: 10px">
+          <strong>How similar (visually)</strong> do you find this image (left-side) to the last scene you scored (right-side)?
+          <em style="font-size: 14px;"> Please rate it from 1 to 5:</em>
+        </mat-hint>
+      </div>
+      <div fxFlex="50" fxLayoutAlign="center center">
+        <mat-hint style="font-size: 14px;;margin-right: 5px">1 (completely different) </mat-hint>
+        <mat-slider color="primary" thumbLabel="true" tickInterval="1" step="1" min="1" max="5" [(value)]="rate['similarity']" style="width: 50%" (valueChange)="onRateChange()">
+        </mat-slider>
+        <mat-hint style="font-size: 14px;">5 (very similar) </mat-hint>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div fxLayout="column" fxFill *ngIf="isSimilarity && rate['similarity'] != null" @fadeSlideInOut>
+  <div fxFlex="100" fxLayoutAlign="start stretch" style="padding-bottom: 20px;">
+    <div fxLayout="row" fxFill>
+      <div fxFlex="100">
+        <mat-hint>Do you give the same scores (see below) to this image?</mat-hint>
+        <mat-radio-group aria-label="Select an option" [color]="'primary'" [(ngModel)]="rate['keepScores']" class="radio-buttons" (change)="onKeepScoreChange($event)">
+          <mat-radio-button [value]="false">No</mat-radio-button>
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-divider *ngIf="isSimilarity && rate['similarity'] != null"></mat-divider>
+
+<div fxLayout="column" fxFill *ngIf="!isSimilarity || rate['similarity'] != null" @fadeSlideInOut>
+
+  <div fxFlex="33" fxLayoutAlign="start stretch" style="padding: 10px;">
+    <div [fxLayout]="isSimilarity ? 'row' : 'column'" fxFill>
+      <div [fxFlex]="isSimilarity ? '50' : '100'" fxLayoutAlign="start stretch">
+        <mat-hint>
+          How safe is this place in your opinion? score: <span [ngStyle]="!rate['safety'] && {'color': 'red'}">{{rate['safety'] ||  'not specified'}}</span>
+        </mat-hint>
+      </div>
+      <div [fxFlex]="isSimilarity ? '50' : '100'" fxLayoutAlign="center center">
+        <mat-hint style="font-size: 14px;margin-right: 5px">1 (very unsafe) </mat-hint>
+        <mat-slider color="primary" thumbLabel="true" tickInterval="1" step="1" min="1" max="5" [(value)]="rate['safety']" style="width: 50%" (valueChange)="onRateChange()">
+        </mat-slider>
+        <mat-hint style="font-size: 14px;">5 (very safe)</mat-hint>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="33" fxLayoutAlign="start stretch" style="padding: 10px;">
+    <div [fxLayout]="isSimilarity ? 'row' : 'column'" fxFill>
+      <div [fxFlex]="isSimilarity ? '50' : '100'" fxLayoutAlign="start stretch">
+        <mat-hint>
+          How attractive is this place in your opinion? score: <span [ngStyle]="!rate['attractiveness'] && {'color': 'red'}">{{rate['attractiveness'] ||  'not specified'}}</span>
+        </mat-hint>
+      </div>
+      <div [fxFlex]="isSimilarity ? '50' : '100'" fxLayoutAlign="center center">
+        <mat-hint style="font-size: 14px;margin-right: 5px">1 (very unattractive) </mat-hint>
+        <mat-slider color="primary" thumbLabel="true" tickInterval="1" step="1" min="1" max="5" [(value)]="rate['attractiveness']" style="width: 50%" (valueChange)="onRateChange()">
+        </mat-slider>
+        <mat-hint style="font-size: 14px;">5 (very attractive)</mat-hint>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="34" fxLayoutAlign="start stretch" style="padding: 10px;">
+    <div [fxLayout]="isSimilarity ? 'row' : 'column'" fxFill>
+      <div [fxFlex]="isSimilarity ? '50' : '100'" >
+        <mat-hint>
+          How appropriate is this place for starting a business (e.g. restaurant)?
+          score: <span [ngStyle]="!rate['business'] && {'color': 'red'}">{{rate['business'] ||  'not specified'}}</span>
+        </mat-hint>
+      </div>
+      <div [fxFlex]="isSimilarity ? '50' : '100'" fxLayoutAlign="center center">
+        <mat-hint style="font-size: 14px;margin-right: 5px">1 (very inappropriate) </mat-hint>
+        <mat-slider color="primary" thumbLabel="true" tickInterval="1" step="1" min="1" max="5" [(value)]="rate['business']" style="width: 50%" (valueChange)="onRateChange()">
+        </mat-slider>
+        <mat-hint style="font-size: 14px;">5 (very appropriate)</mat-hint>
+      </div>
+    </div>
+  </div>
+
+</div>

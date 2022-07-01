@@ -1,0 +1,42 @@
+<h2 mat-dialog-title *ngIf="data.mode=='warning'">WARNING</h2>
+<mat-dialog-content class="mat-typography" style="margin-top: 10px;">
+  <div>
+    <div *ngIf="data.mode=='end' && !data.prolific">
+      <p>Thank You! You have finished one task successfully.</p>
+      <br><br>
+      <mat-hint>Would like to do one more task? Then, press <strong>'GO TO NEXT PATH'</strong> button.</mat-hint>
+    </div>
+    <div *ngIf="data.mode=='end' && data.prolific">
+      <p style="font-size: larger">Thank You! You have finished {{data.counter}} out of 3 paths successfully.</p>
+      <br>
+      <mat-hint>Please press the <strong>'GO TO NEXT PATH'</strong> button for loading the next path.</mat-hint>
+    </div>
+    <div *ngIf="data.mode=='finish' && data.prolific">
+      <p style="font-size: larger">You have finished all 3 paths successfully.</p>
+      <br>
+      <mat-hint>Please submit your inputs by pressing the <strong>'FINISH'</strong>.</mat-hint>
+    </div>
+    <div *ngIf="data.mode=='warning' && data.message == 'rate'">
+      <mat-hint style="font-size: 16px">To finish the task, you must at least submit your score at 4 different locations.</mat-hint>
+      <br><br>
+      <mat-hint style="color: red;">* Your rated locations are shown with a star icon on the map.</mat-hint>
+    </div>
+    <div *ngIf="data.mode=='warning' && data.message == 'visit'">
+      <mat-hint style="font-size: 16px">To finish the task, you must visit all blue points shown on the map.</mat-hint>
+      <br>
+      <mat-hint style="color: red;">* Your visited points are shown with a green point on the map.</mat-hint>
+    </div>
+  </div>
+</mat-dialog-content>
+<br>
+<div mat-dialog-actions align="end" *ngIf="(data.mode=='end' || data.mode=='finish') && data.prolific">
+  <button mat-raised-button mat-dialog-close color="primary" *ngIf="data.mode=='end'" [mat-dialog-close]="'next'">GO TO NEXT PATH</button>
+  <button mat-raised-button [mat-dialog-close]="'finish'" *ngIf="data.mode=='finish'" >FINISH</button>
+</div>
+<div mat-dialog-actions align="end" *ngIf="data.mode=='end' && !data.prolific">
+  <button mat-raised-button mat-dialog-close color="primary" [mat-dialog-close]="'next'">GO TO NEXT PATH</button>
+  <button mat-raised-button [mat-dialog-close]="'close'" >GOODBYE!</button>
+</div>
+<div mat-dialog-actions align="end" *ngIf="data.mode=='warning'">
+  <button mat-raised-button [mat-dialog-close]="'ok'" color="warn">OK</button>
+</div>

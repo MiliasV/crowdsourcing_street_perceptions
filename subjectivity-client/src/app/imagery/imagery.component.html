@@ -1,0 +1,15 @@
+<div class="viewer-container">
+  <div #streetsmartApi class="panoramaViewerWindow"></div>
+  <div class="viewer-buttons">
+    <div fxLayout="column" fxFill>
+      <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center" class="action-buttons">
+        <button mat-raised-button (click)="imageryService.backward()">
+          <mat-icon class="icon-flipped">directions_walk</mat-icon>BACKWARD
+        </button>
+        <button mat-raised-button (click)="imageryService.forward()">
+          <mat-icon>directions_walk</mat-icon>FORWARD
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="main-content" style="height: 100%" *ngIf="initialized">
+  <div fxLayout="column" fxFill>
+    <div fxLayout fxFlex>
+      <div #parentElement fxFlex="100" fxLayoutAlign="center center" style="border-right: 1px solid grey;">
+        <app-imagery class="viewer"></app-imagery>
+        <mat-spinner *ngIf="!viewerLoaded" class="spinner"></mat-spinner>
+      </div>
+    </div>
+  </div>
+</div>
+

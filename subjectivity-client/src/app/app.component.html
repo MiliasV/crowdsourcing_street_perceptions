@@ -1,0 +1,24 @@
+<div class="main-container">
+  <mat-sidenav-container>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row class="instruction-toolbar" *ngIf="isLoggedIn">
+          <div>
+            <span class="instruction-title">Task Description: </span>
+            <span class="instruction">Click <span class="instruction-button" (click)="openInstructionWindow()">[HERE]</span> if you want to watch the task instructions again.</span>
+          </div>
+          <span class="flexExpand"></span>
+          <div [hidden]="isProlific">
+            <a  mat-button (click)="signOut()"> <mat-icon >logout</mat-icon> </a>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <main>
+          <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
