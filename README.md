@@ -22,7 +22,7 @@ Then, adjust the configurations in `./annotation-server/src/main/resources/appli
 bash ./build.prod
 ```
 
-* NOTE: To retreive the street-level imagery data, the cyclomedia account information should be configured in the `application.properties`. In the future releases, we will add more data providers.
+* NOTE: To retreive street-level imagery data, the cyclomedia account information should be configured in the `application.properties`. In the future releases, we will add more data providers.
 
 After the build process finished, the final war file can be found in: `./annotation-server/target/subjectivity.war`.
 
