@@ -16,7 +16,7 @@ NPM 6.0+
 ## Building from source (client and server applications)
 First, create a database using the sql file in the `./database/` folder.
 
-Then, adjust the configurations in `./annotation-server/src/main/resources/application.properties`.
+Second, adjust the configurations in `./annotation-server/src/main/resources/application.properties`. Then run the following command in the root folder:
 
 ```
 bash ./build.prod
