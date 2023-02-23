@@ -14,13 +14,16 @@ NPM 6.0+
 ```
 
 ## Building from source (client and server applications)
-First, create a database using the sql files in `./database/` folder.
+First, create a database using the sql file in the `./database/` folder.
 
 Then, adjust the configurations in `./annotation-server/src/main/resources/application.properties`.
 
 ```
 bash ./build.prod
 ```
+
+* NOTE: To retreive the street-level imagery data, the cyclomedia account information should be configured in the `application.properties`. In the future releases, we will add more data providers.
+
 After the build process finished, the final war file can be found in: `./annotation-server/target/subjectivity.war`.
 
 
