@@ -5,8 +5,9 @@ For running the whole application locally inside a docker container docker, simp
 
 ```
 docker-compose up -d
-
 ```
+
+Then, open the application on the browser: `http://localhost:8080/`
 
 ## Building from source (client and server applications)
 
