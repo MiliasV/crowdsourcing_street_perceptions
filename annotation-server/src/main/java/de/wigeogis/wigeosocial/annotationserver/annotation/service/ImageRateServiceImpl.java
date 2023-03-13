@@ -1,6 +1,5 @@
 package de.wigeogis.wigeosocial.annotationserver.annotation.service;
 
-import de.wigeogis.wigeosocial.annotationserver.annotation.dao.AnnotationDao;
 import de.wigeogis.wigeosocial.annotationserver.annotation.dao.ImageRateDao;
 import de.wigeogis.wigeosocial.annotationserver.annotation.model.ImageRate;
 import org.springframework.beans.factory.annotation.Autowired;

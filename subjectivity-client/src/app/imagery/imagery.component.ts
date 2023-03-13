@@ -57,6 +57,7 @@ export class ImageryComponent implements OnInit {
         console.log('Api: init: success!');
         this.imageryService.setApiInit();
       }, (err) => {
+        this.imageryService.setApiInit();
         console.error('Api: init: failed. Error: ', err);
       });
 

@@ -61,12 +61,12 @@
 
           <!-- build app -->
           <execution>
-            <id>npm run build external</id>
+            <id>npm run build docker</id>
             <goals>
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build-external</arguments>
+              <arguments>run build-docker</arguments>
             </configuration>
           </execution>
 

@@ -1,11 +1,7 @@
 package de.wigeogis.wigeosocial.annotationserver.annotation.dao;
 
 import javax.transaction.Transactional;
-
-import de.wigeogis.wigeosocial.annotationserver.annotation.model.Image;
-import de.wigeogis.wigeosocial.annotationserver.annotation.model.Scene;
 import de.wigeogis.wigeosocial.annotationserver.annotation.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

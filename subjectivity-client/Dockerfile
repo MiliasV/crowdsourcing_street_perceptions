@@ -13,7 +13,7 @@ RUN npm install
 RUN npm install -g @angular/cli
 
 # add app
-COPY . /app
+COPY subjectivity-client /app
 
 # start app
 CMD ng serve --host 0.0.0.0

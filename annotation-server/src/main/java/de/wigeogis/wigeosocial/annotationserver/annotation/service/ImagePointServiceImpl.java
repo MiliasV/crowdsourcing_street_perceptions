@@ -1,11 +1,8 @@
 package de.wigeogis.wigeosocial.annotationserver.annotation.service;
 
-import de.wigeogis.wigeosocial.annotationserver.annotation.dao.AnnotationDao;
+
 import de.wigeogis.wigeosocial.annotationserver.annotation.dao.ImagePointDao;
-import de.wigeogis.wigeosocial.annotationserver.annotation.dao.LabelDao;
-import de.wigeogis.wigeosocial.annotationserver.annotation.model.Annotation;
 import de.wigeogis.wigeosocial.annotationserver.annotation.model.ImagePoint;
-import de.wigeogis.wigeosocial.annotationserver.annotation.model.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

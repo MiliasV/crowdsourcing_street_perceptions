@@ -1,5 +1,1 @@
-/.idea/
-/.idea/
-
-# Project exclude paths
-/subjectivity-client/target/
+environment.env

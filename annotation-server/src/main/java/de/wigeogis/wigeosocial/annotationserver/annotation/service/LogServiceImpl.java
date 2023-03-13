@@ -1,9 +1,7 @@
 package de.wigeogis.wigeosocial.annotationserver.annotation.service;
 
-import de.wigeogis.wigeosocial.annotationserver.annotation.dao.AnnotationDao;
+
 import de.wigeogis.wigeosocial.annotationserver.annotation.dao.LogDao;
-import de.wigeogis.wigeosocial.annotationserver.annotation.dao.SessionDao;
-import de.wigeogis.wigeosocial.annotationserver.annotation.model.Annotation;
 import de.wigeogis.wigeosocial.annotationserver.annotation.model.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -8,18 +8,11 @@ import com.google.gson.JsonObject;
 import de.wigeogis.wigeosocial.annotationserver.annotation.dao.ImageRecordingDao;
 import de.wigeogis.wigeosocial.annotationserver.annotation.model.*;
 import de.wigeogis.wigeosocial.annotationserver.annotation.service.*;
-import de.wigeogis.wigeosocial.annotationserver.geoprocessing.WFSClient;
 import de.wigeogis.wigeosocial.annotationserver.security.services.UserDetailsImpl;
 import de.wigeogis.wigeosocial.annotationserver.storage.FileStorage;
 import de.wigeogis.wigeosocial.annotationserver.utils.IPDetector;
 import de.wigeogis.wigeosocial.annotationserver.utils.RandomGenerator;
 import eu.bitwalker.useragentutils.UserAgent;
-import javaxt.io.Image;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.IOUtils;
-import org.locationtech.jts.geom.MultiLineString;
-import org.locationtech.jts.geom.MultiPolygon;
-import org.locationtech.jts.io.WKTReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
@@ -55,8 +48,6 @@ public class SubjectivityController {
     @Autowired
     private UserService userManagerService;
 
-    @Autowired
-    public SceneService sceneService;
 
     @Autowired
     public PathService pathService;
@@ -78,9 +69,6 @@ public class SubjectivityController {
 
     @Autowired
     public SimilarImageRateService similarImageRateService;
-
-    @Autowired
-    private WFSClient wfsClient;
 
     @Autowired
     private FileStorage fileStorage;
@@ -205,41 +193,6 @@ public class SubjectivityController {
         ).collect(Collectors.toList());
         String json = newGson().toJson(recordings);
         return json;
-    }
-
-
-    @GetMapping(value = {"path/refresh","path/refresh/{pathId}"})
-    @PreAuthorize("hasRole('ROLE_USER')")
-    @ResponseBody
-    public String refreshPath(@PathVariable(value = "pathId", required = false) Integer pathId) throws Exception {
-        WKTReader reader = new WKTReader();
-        List<Path> paths = new ArrayList<>();
-        if(pathId == null) {
-            paths = pathService.getAll();
-        }else {
-            Path path = pathService.findRow(pathId);
-            paths.add(path);
-        }
-        int counter = 0;
-        for (Path path : paths) {
-            MultiPolygon polygon = (MultiPolygon) reader.read(path.getPolygon());
-            MultiLineString line = (MultiLineString) reader.read(path.getLine());
-            List<Map<String, Object>> recordings = wfsClient.getFeatures(polygon, line);
-            for (Map record : recordings) {
-                ImageRecordings imagePoint = new ImageRecordings();
-                imagePoint.setPathId(path.getId());
-                imagePoint.setOrderId((Integer) record.get("index"));
-                imagePoint.setImageId(record.get("imageId").toString());
-                imagePoint.setDirection((Float) record.get("direction"));
-                imagePoint.setLng((Double) record.get("lng"));
-                imagePoint.setLat((Double) record.get("lat"));
-                imagePoint.setHeight((Double) record.get("height"));
-                imagePoint.setGroundOffset((Double) record.get("groundLevelOffset"));
-                imageRecordingService.insert(imagePoint);
-                counter++;
-            }
-        }
-        return String.valueOf(counter);
     }
 
 
