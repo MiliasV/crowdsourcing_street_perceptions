@@ -1,7 +1,7 @@
 # Subjectivity
 
 ## Run locally via Docker
-For running the whole application locally inside a docker container docker, simply run the following command:
+For running the whole application locally inside a docker container, simply run the following command:
 
 ```
 docker-compose up -d
